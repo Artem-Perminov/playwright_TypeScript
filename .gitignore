@@ -1,3 +1,8 @@
+# Playwright
+/test-results/
+/playwright-report/
+/playwright/.cache/
+
 # Ignore node_modules directory
 node_modules/
 
@@ -26,3 +31,4 @@ yarn.lock
 # Ignore any other build or configuration files
 *.swp
 .DS_Store
+
