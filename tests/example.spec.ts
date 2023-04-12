@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { getStartedLink } from '../fixtures/selectors';
 
 test('has title', async ({ page }) => {
   await page.goto('https://playwright.dev/');
@@ -7,11 +8,15 @@ test('has title', async ({ page }) => {
   await expect(page).toHaveTitle(/Playwright/);
 });
 
-test('get started link', async ({ page }) => {
+test.use({ browserName: 'chromium' });
+
+test.only('get started link', async ({ context }) => {
+  const page = await context.newPage();
+
   await page.goto('https://playwright.dev/');
 
   // Click the get started link.
-  await page.getByRole('link', { name: 'Get started' }).click();
+  await page.locator(getStartedLink).click();
 
   // Expects the URL to contain intro.
   await expect(page).toHaveURL(/.*intro/);
